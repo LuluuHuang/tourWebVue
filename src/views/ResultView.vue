@@ -67,11 +67,21 @@ const store = useDataStore()
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item" @click="store.nextPage()">Next</li>
+            <li class="page-item">
+                <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item">
+                <span class="page-link">1</span>
+            </li>
+            <li class="page-item">
+                <span class="page-link">2</span>
+            </li>
+            <li class="page-item">
+                <span class="page-link">3</span>
+            </li>
+            <li class="page-item" @click="store.nextPage()">
+                <span class="page-link">nextpage</span>
+            </li>
         </ul>
     </nav>
 </template>

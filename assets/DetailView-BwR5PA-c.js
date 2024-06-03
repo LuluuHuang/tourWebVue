@@ -1,0 +1,1 @@
+import{u as a,c as s,a as e,t as o,b as n,F as r,o as l}from"./index-KlQEPkSC.js";const c=e("p",null,"詳細內容",-1),m={__name:"DetailView",setup(u){const t=a();return(_,p)=>(l(),s(r,null,[c,e("p",null,o(n(t).detail),1)],64))}};export{m as default};

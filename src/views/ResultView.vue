@@ -71,15 +71,6 @@ import photoNoImage from '@/assets/images/photo_no.jpeg';
             <li class="page-item" @click="store.prePage()">
                 <span class="page-link">上一頁</span>
             </li>
-            <li class="page-item">
-                <span class="page-link">1</span>
-            </li>
-            <li class="page-item">
-                <span class="page-link">2</span>
-            </li>
-            <li class="page-item">
-                <span class="page-link">3</span>
-            </li>
             <li class="page-item" @click="store.nextPage()">
                 <span class="page-link">下一頁</span>
             </li>
@@ -89,5 +80,9 @@ import photoNoImage from '@/assets/images/photo_no.jpeg';
 <style lang="scss">
 .resultContent{
     padding-top: 135px;
+    img{
+        width: 100%;
+        height: 300px;
+    }
 }
 </style>

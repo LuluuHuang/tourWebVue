@@ -12,20 +12,27 @@ const itemCategory = computed(() => {
 
 </script>
 <template>
-    <p>詳細內容</p>
-    <div class="row">
-        <div class="col-12">
+    <div class="row detailContent">
+        <div class="col-12 text-center">
             <h1> {{ itemCategory }}</h1>
         </div>
-        <div class="col-6">
-            <img 
+        <div class="row d-flex justify-content-center g-2">
+            <div class="col-5">
+                <img 
                 :src="detailInfo.Picture.PictureUrl1" 
                 :alt="detailInfo.Picture.PictureDescription1" 
                 class="img-fluid img-thumbnail"
             >
+            </div>
+            <div class="col-5">
+                {{ detailInfo.DescriptionDetail }}
+            </div>
         </div>
-        <div class="col-6">
-            {{ detailInfo.DescriptionDetail }}
-        </div>
+
     </div>
 </template>
+<style lang="scss">
+    .detailContent{
+        padding-top: 130px;
+    }
+</style>

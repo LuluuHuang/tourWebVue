@@ -177,31 +177,41 @@ export const useDataStore = defineStore('data', () => {
     const router = useRouter()
     const searchResult = ref([])
     const keyWord = ref('')
-    let detail = ref([])
-    let skipPage = ref(0)
-    let nowPage = ref(20)
+    const detail = ref([])
+    const skipPage = ref(0)
+    const nowPage = ref(20)
     const search = () => {
         skipPage.value = 0;
         searchResult.value = [];
         getResult();
     }
 
-    const nextPage = () => {
-        skipPage.value = skipPage.value + 20;
-        getResult();
+    const nextPage = () => {   
+        if(searchCity.value == ''){
+            skipPage.value = skipPage.value + 20;
+            console.log(skipPage.value);
+            getMore(searchCategory.value,skipPage.value);
+        }else{
+            skipPage.value = skipPage.value + 20;
+            getResult();
+        }
     }
     const prePage = () =>{
-        if(skipPage.value>20){
-            skipPage.value = skipPage.value - 20;
-            getResult();
+        if(searchCity.value == ''){
+            if(skipPage.value>20){
+                skipPage.value = skipPage.value - 20;
+                getMore(searchCategory.value,skipPage.value);
+            }else{
+                getMore(searchCategory.value,skipPage.value);
+                console.log('已是最前資料');
+            }
         }else{
             getResult();
-            console.log('已是最前資料');
         }
     }
     const getResult = () => {
         searchResult.value = [];
-        if(keyWord.value == ''){
+        if(keyWord.value == '' && searchCategory.value!=='' && searchCity.value!==''){
             axios
             .get(
                 `${BASE_URL}/${searchCategory.value}/${searchCity.value}?%24top=${nowPage.value}&%24skip=${skipPage.value}&%24format=JSON`
@@ -211,7 +221,7 @@ export const useDataStore = defineStore('data', () => {
                 searchResult.value = res.data;
                 router.push('/result')
             })
-        }else{
+        }else if(keyWord.value !== '' && searchCategory.value!=='' && searchCity.value!==''){
             const searchKeyword = encodeURIComponent(keyWord.value);
             axios
             .get(
@@ -222,16 +232,17 @@ export const useDataStore = defineStore('data', () => {
                 searchResult.value = res.data;
                 router.push('/result')
             })
+        }else if(searchCategory.value =='' || searchCity.value ==''){
+            alert('請選擇地區及類別')
         }
-        
     }
     const getDetail = (i) =>{
         detail.value = searchResult.value[i];
         console.log(detail.value);
         router.push('/detail');
     }
-    const getMore = (item) =>{
-        skipPage.value = 0;
+    const getMore = (item,page) =>{
+        skipPage.value = page;
         axios
             .get(
                 `${BASE_URL}/${item}?%24top=${nowPage.value}&%24skip=${skipPage.value}&%24format=JSON`

@@ -6,7 +6,7 @@
     <div class="col-12" v-for="(item,i) in store.categoryData.slice(1)" :key="i">
         <div class="row justify-content-end my-4">
             <div class="col-md-6 col-12 d-flex justify-content-end">
-                <button type="button" class="moreBtn" @click="store.getMore(item.engCategory)">更多{{item.Category}}</button>
+                <button type="button" class="moreBtn" @click="store.getMore(item.engCategory,0)">更多{{item.Category}}</button>
             </div>
         </div>
         <div class="row g-md-3 gy-5 gx-0">

@@ -7,7 +7,7 @@ export const useDataStore = defineStore('data', () => {
     const cityData = [
         {
         Name: '不分區域',
-        engName: 'all'
+        engName: ''
         },
         {
         Name: '台北市',
@@ -180,12 +180,36 @@ export const useDataStore = defineStore('data', () => {
     const detail = ref([])
     const skipPage = ref(0)
     const nowPage = ref(20)
+    const token = ref('')
+    const parameter = new URLSearchParams({
+        grant_type:"client_credentials",
+        client_id: "yuruh03-966955f8-265d-49c8",
+        client_secret: "5b73c5b7-8715-420f-90d8-d26fbfac154b"
+    });
+    let auth_url = "https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token";
+
+    const getToken = () => {
+            axios
+            .post(
+                auth_url,
+                parameter,
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    }
+                }
+            )
+            .then((response)=>{
+                console.log(response);
+                token.value = response.data.access_token;
+            })
+        }
+    getToken();
     const search = () => {
         skipPage.value = 0;
         searchResult.value = [];
         getResult();
     }
-
     const nextPage = () => {   
         if(searchCity.value == ''){
             skipPage.value = skipPage.value + 20;
@@ -198,7 +222,7 @@ export const useDataStore = defineStore('data', () => {
     }
     const prePage = () =>{
         if(searchCity.value == ''){
-            if(skipPage.value>20){
+            if(skipPage.value >= 20){
                 skipPage.value = skipPage.value - 20;
                 getMore(searchCategory.value,skipPage.value);
             }else{
@@ -206,34 +230,45 @@ export const useDataStore = defineStore('data', () => {
                 console.log('已是最前資料');
             }
         }else{
+            skipPage.value = skipPage.value - 20;
             getResult();
         }
     }
-    const getResult = () => {
+    function getResult(){
         searchResult.value = [];
-        if(keyWord.value == '' && searchCategory.value!=='' && searchCity.value!==''){
+        if(keyWord.value == '' && searchCategory.value !== ''){
             axios
             .get(
-                `${BASE_URL}/${searchCategory.value}/${searchCity.value}?%24top=${nowPage.value}&%24skip=${skipPage.value}&%24format=JSON`
+                `${BASE_URL}/${searchCategory.value}/${searchCity.value}?%24top=${nowPage.value}&%24skip=${skipPage.value}&%24format=JSON`,
+                {
+                    headers: {
+                        "authorization": `Bearer ${token.value}`,
+                    }
+                }
             )
             .then((res) => {
                 console.log(res);
                 searchResult.value = res.data;
                 router.push('/result')
             })
-        }else if(keyWord.value !== '' && searchCategory.value!=='' && searchCity.value!==''){
+        }else if(keyWord.value !== '' && searchCategory.value!=='' && searchCity.value !==''){
             const searchKeyword = encodeURIComponent(keyWord.value);
             axios
             .get(
-                `${BASE_URL}/${searchCategory.value}/${searchCity.value}?%24filter=contains%28${searchCategory.value}Name%2C%27${searchKeyword}%27%29&%24top=${nowPage.value}&%24skip=${skipPage.value}&%24format=JSON`
+                `${BASE_URL}/${searchCategory.value}/${searchCity.value}?%24filter=contains%28${searchCategory.value}Name%2C%27${searchKeyword}%27%29&%24top=${nowPage.value}&%24skip=${skipPage.value}&%24format=JSON`,
+                {
+                    headers: {
+                        "authorization": `Bearer ${token.value}`,
+                    }
+                }
             )
             .then((res) => {
                 console.log(res);
-                searchResult.value = res.data;
-                router.push('/result')
+                    searchResult.value = res.data;
+                    router.push('/result')
             })
-        }else if(searchCategory.value =='' || searchCity.value ==''){
-            alert('請選擇地區及類別')
+        }else if(searchCategory.value ==''){
+            alert('請選擇類別')
         }
     }
     const getDetail = (i) =>{
@@ -269,6 +304,7 @@ export const useDataStore = defineStore('data', () => {
         getDetail,
         detail,
         keyWord,
-        getMore
+        getMore,
+        getToken,
     }
 })

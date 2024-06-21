@@ -4,7 +4,10 @@ const store = useDataStore()
 import photoNoImage from '@/assets/images/photo_no.jpeg';
 </script>
 <template>
-    <div class="col-12 resultContent">
+    <div class="col-12 resultContent text-center" v-if="store.searchResult.length == 0">
+        <h1>無更多內容</h1>
+    </div>
+    <div class="col-12 resultContent" v-else>
         <div v-if="store.searchCategory == 'ScenicSpot'" class="row">
             <div
                 v-for="(item, i) in store.searchResult"
@@ -84,5 +87,8 @@ import photoNoImage from '@/assets/images/photo_no.jpeg';
         width: 100%;
         height: 300px;
     }
+}
+.page-item{
+    cursor: pointer;
 }
 </style>

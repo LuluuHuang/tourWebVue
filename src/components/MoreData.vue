@@ -31,7 +31,7 @@ $primary:#FD975E;
     background-color: $primary;
     color: white;
     font-size: 1.5rem;
-    padding: 10px;
+    padding: 15px;
 }
 .moreCard{
     border: 4px solid rgb(199, 199, 199);
@@ -47,7 +47,7 @@ $primary:#FD975E;
     }
     p{
         height: 20%;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         display: flex;
         justify-content: center;
         align-items: center;

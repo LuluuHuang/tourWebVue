@@ -14,60 +14,72 @@ import photoNoImage from '@/assets/images/photo_no.jpeg';
                     <div
                         v-for="(item, i) in store.searchResult"
                         :key="i"
-                        class="col-3 name"
+                        class="col-lg-3 col-md-6 col-12 name"
                         @click="store.getDetail(i)"
                     >
                         <p>{{ item.ScenicSpotName }}</p>
-                        <img
-                            :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
-                            :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
-                            class="img-fluid"
-                        />
+                        <div class="imgContainer">
+                            <img
+                                :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
+                                :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
+                                class="img-fluid"
+                            />
+                        </div>
+                        
                     </div>
                 </div>
                 <div v-if="store.searchCategory == 'Activity'" class="row">
                     <div
                         v-for="(item, i) in store.searchResult"
                         :key="i"
-                        class="col-3 name"
+                        class="col-lg-3 col-md-6 col-12 name"
                         @click="store.getDetail(i)"
                     >
                         <p>{{ item.ActivityName }}</p>
-                        <img
-                            :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
-                            :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
-                            class="img-fluid"
-                        />
+                        <div class="imgContainer">
+                            <img
+                                :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
+                                :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
+                                class="img-fluid"
+                            />
+                        </div>
+                        
                     </div>
                 </div>
                 <div v-if="store.searchCategory == 'Hotel'" class="row">
                     <div
                         v-for="(item, i) in store.searchResult"
                         :key="i"
-                        class="col-3 name"
+                        class="col-lg-3 col-md-6 col-12 name"
                         @click="store.getDetail(i)"
                     >
                         <p>{{ item.HotelName }}</p>
-                        <img
-                            :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
-                            :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
-                            class="img-fluid"
-                        />
+                        <div class="imgContainer">
+                            <img
+                                :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
+                                :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
+                                class="img-fluid"
+                            />
+                        </div>
+                        
                     </div>
                 </div>
                 <div v-if="store.searchCategory == 'Restaurant'" class="row">
                     <div
                         v-for="(item, i) in store.searchResult"
                         :key="i"
-                        class="col-3 name"
+                        class="col-lg-3 col-md-6 col-12 name"
                         @click="store.getDetail(i)"
                     >
                         <p>{{ item.RestaurantName }}</p>
-                        <img
-                            :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
-                            :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
-                            class="img-fluid"
-                        />
+                        <div class="imgContainer">
+                            <img
+                                :src="item.Picture && item.Picture.PictureUrl1 ? item.Picture.PictureUrl1 : photoNoImage"
+                                :alt="item.Picture && item.Picture.PictureDescription1 ? item.Picture.PictureDescription1 : 'No description available'"
+                                class="img-fluid"
+                            />
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -91,8 +103,9 @@ import photoNoImage from '@/assets/images/photo_no.jpeg';
     .name{
         font-size: 1rem;
         text-align: center;
-        padding-bottom: 10px;
         cursor: pointer;
+        overflow: hidden;
+        margin-bottom: 20px;
         p{
             background-color: #fd975e;
             color: white;
@@ -101,14 +114,21 @@ import photoNoImage from '@/assets/images/photo_no.jpeg';
             padding: 5px 10px;
             margin: 0;
         }
-        img{
+        .imgContainer{
             width: 100%;
-            height: 300px;
+            height: 350px;
+            overflow: hidden;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
         }
     }
     .name:hover{
         img{
             box-shadow: #04040426 2px 2px 2.6px;
+            transform: scale(1.1);
         }
     }
 

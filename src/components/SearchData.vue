@@ -1,10 +1,10 @@
 <script setup>
 import { useDataStore } from '../stores/getData.js'
-const store = useDataStore()
+const store = useDataStore();
 </script>
 
 <template>
-    <div class="col-6 d-flex justify-content-center flex-column">
+    <div class="col-5 d-flex justify-content-center flex-column">
         <div class="col-12 pb-2">
             <input type="text" name="" id="" class="form-control" placeholder="關鍵字搜尋" v-model="store.keyWord">
         </div>

@@ -22,7 +22,7 @@
 }
 header{
     width: 100%;
-    background-color: rgba($color: #ffffff, $alpha: 0.5);
+    background-color: rgba($color: #dcdbdb, $alpha: 0.5);
     position: fixed;
     top:0;
 }

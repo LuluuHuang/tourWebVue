@@ -1,29 +1,35 @@
 <template>
-    <header class="d-flex flex-wrap justify-content-center py-3">
-        <a
-            href="#"
-            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none px-5"
-            to="/"
-        >
-            <span class="fs-4">TAIWAN旅遊網</span>
-        </a>
-        <ul class="nav nav-pills">
-            <li class="nav-item">旅遊景點</li>
-            <li class="nav-item">觀光活動</li>
-            <li class="nav-item">住宿推薦</li>
-            <li class="nav-item">美食品嘗</li>
-        </ul>
+    <header class="navbar navbar-expand-lg" aria-label="Fifth navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand text-dark" href="#" to="/">首頁</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        旅遊景點
+                    </li>
+                    <li class="nav-item">
+                        觀光活動
+                    </li>
+                    <li class="nav-item">
+                        住宿推薦
+                    </li>
+                    <li class="nav-item">
+                        美食品嚐
+                    </li>
+                </ul>
+            </div>
+        </div>
     </header>
 </template>
 <style lang="scss">
 .nav-item{
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding: 10px;
 }
 header{
-    width: 100%;
-    background-color: rgba($color: #dcdbdb, $alpha: 0.5);
-    position: fixed;
-    top:0;
+    background-color: #eaeaea;
 }
 </style>

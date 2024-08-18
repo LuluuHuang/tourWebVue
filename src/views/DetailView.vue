@@ -22,11 +22,19 @@ const itemCategory = computed(() => {
                 </div>
                 <div class="row d-flex justify-content-center g-2">
                     <div class="col-lg-6 col-12">
-                        <img 
-                        :src="detailInfo.Picture.PictureUrl1" 
-                        :alt="detailInfo.Picture.PictureDescription1" 
-                        class="img-fluid img-thumbnail"
-                    >
+                        <div class="picture col-12">
+                            <img
+                                :src="detailInfo.Picture.PictureUrl1" 
+                                :alt="detailInfo.Picture.PictureDescription1" 
+                                class="img-fluid img-thumbnail"
+                            >
+                        </div>
+                        <div class="col-12 otherInfo">
+                            <h4>相關資訊</h4>
+                            <p>地址：{{ detailInfo.Address }}</p>
+                            <p>電話：{{ detailInfo.Phone }}</p>
+                            <p>營業時間：{{ detailInfo.OpenTime }}</p>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-12 description">
                         {{ detailInfo.DescriptionDetail }}
@@ -40,19 +48,19 @@ const itemCategory = computed(() => {
                 <div class="row d-flex g-2">
                     <div class="col-lg-6 col-12">
                         <img 
-                        :src="detailInfo.Picture.PictureUrl1" 
-                        :alt="detailInfo.Picture.PictureDescription1" 
-                        class="img-fluid img-thumbnail"
-                    >
+                            :src="detailInfo.Picture.PictureUrl1" 
+                            :alt="detailInfo.Picture.PictureDescription1" 
+                            class="img-fluid img-thumbnail col-12 mb-3"
+                        >
+                        <div class="col-12 otherInfo">
+                            <h4>相關資訊</h4>
+                            <p>地址：{{ detailInfo.Address }}</p>
+                            <p>電話：{{ detailInfo.Phone }}</p>
+                            <p>停車資訊：{{ detailInfo.ParkingInfo }}</p>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-12 description">
                         {{ detailInfo.Description }}
-                    </div>
-                    <div class="col-lg-6 col-12 otherInfo">
-                        <h4>相關資訊</h4>
-                        <p>地址：{{ detailInfo.Address }}</p>
-                        <p>電話：{{ detailInfo.Phone }}</p>
-                        <p>停車資訊：{{ detailInfo.ParkingInfo }}</p>
                     </div>
                 </div>
             </div>
@@ -63,19 +71,19 @@ const itemCategory = computed(() => {
                 <div class="row d-flex g-2">
                     <div class="col-lg-6 col-12">
                         <img 
-                        :src="detailInfo.Picture.PictureUrl1" 
-                        :alt="detailInfo.Picture.PictureDescription1" 
-                        class="img-fluid img-thumbnail"
-                    >
+                            :src="detailInfo.Picture.PictureUrl1" 
+                            :alt="detailInfo.Picture.PictureDescription1" 
+                            class="img-fluid img-thumbnail col-12 mb-3"
+                        >
+                        <div class="col-12 otherInfo">
+                            <h4>相關資訊</h4>
+                            <p>地址：{{ detailInfo.Address }}</p>
+                            <p>電話：{{ detailInfo.Phone }}</p>
+                            <p>舉辦單位：{{ detailInfo.Organizer }}</p>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-12 description">
                         {{ detailInfo.Description }}
-                    </div>
-                    <div class="col-lg-6 col-12 otherInfo">
-                        <h4>相關資訊</h4>
-                        <p>地址：{{ detailInfo.Address }}</p>
-                        <p>電話：{{ detailInfo.Phone }}</p>
-                        <p>舉辦單位：{{ detailInfo.Organizer }}</p>
                     </div>
                 </div>
             </div>
@@ -86,19 +94,19 @@ const itemCategory = computed(() => {
                 <div class="row d-flex g-2">
                     <div class="col-lg-6 col-12">
                         <img 
-                        :src="detailInfo.Picture.PictureUrl1" 
-                        :alt="detailInfo.Picture.PictureDescription1" 
-                        class="img-fluid img-thumbnail"
-                    >
+                            :src="detailInfo.Picture.PictureUrl1" 
+                            :alt="detailInfo.Picture.PictureDescription1" 
+                            class="img-fluid img-thumbnail col-12 mb-3"
+                        >
+                        <div class="col-12 otherInfo">
+                            <h4>相關資訊</h4>
+                            <p>地址：{{ detailInfo.Address }}</p>
+                            <p>電話：{{ detailInfo.Phone }}</p>
+                            <p>營業時間：{{detailInfo.OpenTime}}</p>
+                        </div>
                     </div>
                     <div class="col-lg-6 col-12 description">
                         {{ detailInfo.Description }}
-                    </div>
-                    <div class="col-lg-6 col-12 otherInfo">
-                        <h4>相關資訊</h4>
-                        <p>地址：{{ detailInfo.Address }}</p>
-                        <p>電話：{{ detailInfo.Phone }}</p>
-                        <p>營業時間：{{detailInfo.OpenTime}}</p>
                     </div>
                 </div>
             </div>
@@ -107,14 +115,17 @@ const itemCategory = computed(() => {
 </template>
 <style lang="scss">
     .detailContent{
-        padding-top: 130px;
+        padding-top: 20px;
         .description{
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         .otherInfo{
             padding: 20px;
             border-radius: 40px 0 40px 40px;
             background-color: bisque;
+            p{
+                margin: 0;
+            }
         }
     }
 </style>
